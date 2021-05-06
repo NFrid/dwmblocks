@@ -2,16 +2,13 @@ PREFIX ?= /usr/local
 CC ?= cc
 LDFLAGS = -lX11
 
-output: dwmblocks.c blocks.def.h blocks.h
-	${CC}  dwmblocks.c $(LDFLAGS) -o dwmblocks
-blocks.h:
-	cp blocks.def.h $@
-
+output: rootblocks.c rootblocks.h config.h
+	${CC}  rootblocks.c $(LDFLAGS) -o rootblocks
 
 clean:
-	rm -f *.o *.gch dwmblocks
+	rm -f *.o *.gch rootblocks
 install: output
 	mkdir -p $(DESTDIR)$(PREFIX)/bin
-	install -m 0755 dwmblocks $(DESTDIR)$(PREFIX)/bin/dwmblocks
+	install -m 0755 rootblocks $(DESTDIR)$(PREFIX)/bin/rootblocks
 uninstall:
-	rm -f $(DESTDIR)$(PREFIX)/bin/dwmblocks
+	rm -f $(DESTDIR)$(PREFIX)/bin/rootblocks

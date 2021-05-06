@@ -1,26 +1,28 @@
-# dwmblocks
+# rootblocks
 
-Modular status bar for dwm written in c.
+Modular status bar for xsetroot/command output written in c.
 
 # muh fork
 
-idk figure it out
+Slightly refactored dwmblocks I suppose...
+
+idk figure it out by yourself
 
 # usage
 
-To use dwmblocks first run 'make' and then install it with 'sudo make install'.
-After that you can put dwmblocks in your xinitrc or other startup script to have it start with dwm.
+To use rootblocks first run 'make' and then install it with 'sudo make install'.
+After that you can put rootblocks in your xinitrc or other startup script.
+
+`-p` flag makes it work in command output mode.
 
 # modifying blocks
 
 The statusbar is made from text output from commandline programs.
-Blocks are added and removed by editing the blocks.h header file.
-By default the blocks.h header file is created the first time you run make which copies the default config from blocks.def.h.
-This is so you can edit your status bar commands and they will not get overwritten in a future update.
 
-# patches
+Blocks are added and removed by editing the config.h header file as well as some
+other settings represented there.
 
-Here are some patches to dwmblocks that add features that I either don't want to merge in, or that require a dwm patch to work.
-I do not maintain these but I will take pull requests to update them.
-<br>
-<a href=https://gist.github.com/IGeraGera/e4a5583b91b3eec2e81fdceb44dea717>dwmblocks-statuscmd-b6b0be4.diff</a>
+There's no config.def.h. If I update and you pull it, you gonna figure out what
+you need to change. 
+
+Well, there's no point using diy stuff if you don't like to play with it anyways...
