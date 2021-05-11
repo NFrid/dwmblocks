@@ -12,30 +12,29 @@
 
 #include "config.h"
 
-static unsigned int delimLen = LENGTH(delim);
+#define STATUSLENGTH (LENGTH(blocks) * CMDLENGTH + 1)
 
 static char statusbar[LENGTH(blocks)][CMDLENGTH] = { 0 };
 static char statusstr[2][STATUSLENGTH]; // current and previous status string
 static int  statusContinue = 1;
-static int  returnStatus   = 0;
 
 // opens process for block's command and stores output in *output
 void getcmd(const Block* block, char* output) {
   FILE* cmdf = popen(block->command, "r");
   if (!cmdf)
     return;
-  fgets(output, CMDLENGTH - delimLen, cmdf);
+  fgets(output, CMDLENGTH, cmdf);
   long i = strlen(output);
   if (i == 0) {
     //return if block and command output are both empty
     pclose(cmdf);
     return;
   }
-  if (delim[0] != '\0') {
-    //only chop off newline if one is present at the end
-    i = output[i - 1] == '\n' ? i - 1 : i;
-    strncpy(output + i, delim, delimLen);
-  } else
+  //only chop off newline if one is present at the end
+  i = output[i - 1] == '\n' ? i - 1 : i;
+  if (LENGTH(delim) != 1)
+    strncpy(output + i, delim, LENGTH(delim));
+  else
     output[i++] = '\0';
   pclose(cmdf);
 }
@@ -162,8 +161,6 @@ int main(int argc, char** argv) {
   if (!setupX())
     return 1;
 #endif
-  delimLen          = MIN(delimLen, strlen(delim));
-  delim[delimLen++] = '\0';
   signal(SIGTERM, termhandler);
   signal(SIGINT, termhandler);
   statusloop();

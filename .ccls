@@ -1,2 +1,2 @@
 gcc
-%h -x c++-header
+%h -x c-header

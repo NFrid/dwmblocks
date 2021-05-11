@@ -1,9 +1,10 @@
 PREFIX ?= /usr/local
 CC ?= cc
 LDFLAGS = -lX11
+CFLAGS = -std=gnu99 -pedantic -Wall
 
 output: rootblocks.c rootblocks.h config.h
-	${CC}  rootblocks.c $(LDFLAGS) -o rootblocks
+	${CC}  rootblocks.c $(LDFLAGS) $(CFLAGS) -o rootblocks
 
 clean:
 	rm -f *.o *.gch rootblocks

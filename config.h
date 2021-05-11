@@ -13,9 +13,5 @@ static const Block blocks[] = {
   // clang-format on
 };
 
-// sets delimeter between status commands. NULL character ('\0') = no delim
-static char delim[] = "][";
-#define CMDLENGTH 150 // max length of command output
-
-// need to define after, do not touch
-#define STATUSLENGTH (LENGTH(blocks) * CMDLENGTH + 1)
+static char delim[] = "]["; // sets delimeter between status commands
+#define CMDLENGTH 150       // max length of command output
