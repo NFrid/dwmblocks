@@ -23,7 +23,7 @@ void getcmd(const Block* block, char* output) {
   FILE* cmdf = popen(block->command, "r");
   if (!cmdf)
     return;
-  fgets(output, CMDLENGTH, cmdf);
+  fgets(output, CMDLENGTH - LENGTH(delim), cmdf);
   long i = strlen(output);
   if (i == 0) {
     //return if block and command output are both empty

@@ -14,4 +14,4 @@ static const Block blocks[] = {
 };
 
 static char delim[] = "]["; // sets delimeter between status commands
-#define CMDLENGTH 150       // max length of command output
+#define CMDLENGTH 250       // max length of command output
