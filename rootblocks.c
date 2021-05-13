@@ -74,10 +74,20 @@ void setupsighandler() {
 // compare prev to cur status
 int statusupd(char* str, char* last) {
   strcpy(last, str);
-  str[0] = '\0';
+  if (LENGTH(opening) != 1)
+    strncpy(str, opening, LENGTH(opening));
+  else
+    str[0] = '\0';
+
   for (unsigned int i = 0; i < LENGTH(blocks); i++)
     strcat(str, statusbar[i]);
   str[strlen(str) - strlen(delim)] = '\0';
+
+  long i = strlen(str);
+  i = str[i - 1] == '\n' ? i - 1 : i;
+  if (LENGTH(ending) != 1)
+    strncpy(str + i, ending, LENGTH(ending));
+
   return strcmp(str, last); // 0 if they are the same
 }
 
