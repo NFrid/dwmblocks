@@ -84,7 +84,7 @@ int statusupd(char* str, char* last) {
   str[strlen(str) - strlen(delim)] = '\0';
 
   long i = strlen(str);
-  i = str[i - 1] == '\n' ? i - 1 : i;
+  i      = str[i - 1] == '\n' ? i - 1 : i;
   if (LENGTH(ending) != 1)
     strncpy(str + i, ending, LENGTH(ending));
 
