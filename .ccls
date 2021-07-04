@@ -1,2 +1,5 @@
 gcc
+-Wall
+-Wextra
+-pedantic
 %h -x c-header
