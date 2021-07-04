@@ -5,7 +5,7 @@ static const Block blocks[] = {
   { "getplayerctl '^c#6272A4^no active player^c#f8f8f2^'",  1,    0 },
   { "db-volume",                                            2,    10 },
   { "db-bat",                                               1,    0 },
-  { "twnextdue"                                             10,   0 },
+  { "twnextdue",                                            10,   0 },
   { "muttupd",                                              10,   0 },
   { "rssupd",                                               10,   0 },
   { "date '+^c#ff92d0^%b %-d, %a^c#f8f8f2^'",               60,   0 },
