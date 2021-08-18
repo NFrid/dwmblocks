@@ -4,7 +4,7 @@ Modular status bar for xsetroot/command output written in c.
 
 # muh fork
 
-Slightly refactored dwmblocks I suppose...
+Slightly modified dwmblocks I suppose...
 
 Made a signal subscriber that will automatically send a signal to update a block.
 Examples are in config.h (make also sure that when you kill a rootblock process
@@ -17,6 +17,11 @@ After that you can put rootblocks in your xinitrc or other startup script.
 
 `-p` flag makes it work in command output mode.
 
+To use subtosignal you must set it in a pipeline after a command that monitors
+some thing you want to signal when it returns any stdout with a callback command.
+
+`some_monitoring_stuff | grep "thing that triggers" | subtosignal "play despacito"`
+
 # modifying blocks
 
 The statusbar is made from text output from commandline programs.
@@ -25,6 +30,6 @@ Blocks are added and removed by editing the config.h header file as well as some
 other settings represented there.
 
 There's no config.def.h. If I update and you pull it, you gonna figure out what
-you need to change. 
+you need to change.
 
 Well, there's no point using diy stuff if you don't like to play with it anyways...
