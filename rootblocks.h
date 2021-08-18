@@ -10,6 +10,7 @@ typedef struct {
   char*        command;
   unsigned int interval;
   unsigned int signal;
+  char*        sub;
 } Block;
 
 void dummysighandler(int num);

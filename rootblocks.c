@@ -17,6 +17,7 @@
 static char statusbar[LENGTH(blocks)][CMDLENGTH] = { 0 };
 static char statusstr[2][STATUSLENGTH]; // current and previous status string
 static int  statusContinue = 1;
+FILE* subprocesses[LENGTH(blocks)];
 
 // opens process for block's command and stores output in *output
 void getcmd(const Block* block, char* output) {
@@ -121,6 +122,14 @@ void pstdout() {
   fflush(stdout);
 }
 
+void subscribe() {
+  const Block* current;
+  for (unsigned int i = 0; i < LENGTH(blocks); i++) {
+    current = blocks + i;
+    subprocesses[i] = popen(current->sub, "r");
+  }
+}
+
 // da loop !!
 void statusloop() {
   setupsighandler();
@@ -173,9 +182,12 @@ int main(int argc, char** argv) {
 #endif
   signal(SIGTERM, termhandler);
   signal(SIGINT, termhandler);
+  subscribe();
   statusloop();
 #ifndef NO_X
   XCloseDisplay(dpy);
 #endif
+  for (unsigned int i = 0; i < LENGTH(blocks); i++)
+    pclose(subprocesses[i]);
   return 0;
 }
