@@ -2,10 +2,10 @@
 static const Block blocks[] = {
   // Command,                                   Update Interval,  Update Signal,  Sub To Signal
   // clang-format off
-  { "getplayerctl '^c#6272A4^no active player^c#f8f8f2^'",  1,    0,   "" },
-  { "db-volume",                                            10,   10,  "pactl subscribe | grep --line-buffered \"sink #\" | subtosignal \"pkill -RTMIN+10 rootblocks\"" },
-  { "echo \"^c#FF92D0^$(xkb-switch)^c#f8f8f2^\"",           10,   12,  "xkb-switch -W | subtosignal \"pkill -RTMIN+12 rootblocks\"" },
-  { "db-bat",                                               1,    0,   "" },
+  { "getplayerctl '^c#6272A4^no active player^c#f8f8f2^'",  60,   21,  "playerctl -F metadata 2> /dev/null | subtosignal \"pkill -RTMIN+21 rootblocks\"" },
+  { "db-volume",                                            60,   10,  "pactl subscribe | grep --line-buffered \"sink #\" | subtosignal \"pkill -RTMIN+10 rootblocks\"" },
+  { "echo \"^c#FF92D0^$(xkb-switch)^c#f8f8f2^\"",           60,   12,  "xkb-switch -W | subtosignal \"pkill -RTMIN+12 rootblocks\"" },
+  { "db-bat",                                               5,    20,  "upower -m | subtosignal \"pkill -RTMIN+20 rootblocks\"" },
   { "twnextdue",                                            10,   0,   "" },
   { "muttupd",                                              10,   0,   "" },
   { "rssupd",                                               10,   0,   "" },
