@@ -6,7 +6,9 @@ Modular status bar for xsetroot/command output written in c.
 
 Slightly refactored dwmblocks I suppose...
 
-idk figure it out by yourself
+Made a signal subscriber that will automatically send a signal to update a block.
+Examples are in config.h (make also sure that when you kill a rootblock process
+by violence a.k.a. killall and stuff you also kill all instances of subtosignal).
 
 # usage
 
